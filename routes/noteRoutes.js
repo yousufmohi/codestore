@@ -4,14 +4,14 @@
 
 const express = require("express");
 const router = express.Router();
-const {getGoals, setGoal, updateGoal, deleteGoal} = require('../controllers/goalController');
+const {getNotes, setNote, updateNote, deleteNote} = require('../controllers/noteController');
 // GET request 
-router.get('/',getGoals);
+router.get('/',getNotes);
 // POST REQUEST
-router.post('/',setGoal);
+router.post('/',setNote);
 // PUT REQUEST
-router.put('/:id',updateGoal);
+router.put('/:id',updateNote);
 // DELETE REQUEST
-router.delete('/:id',deleteGoal);
+router.delete('/:id',deleteNote);
 // exporting the router
 module.exports = router; 
