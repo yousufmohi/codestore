@@ -1,13 +1,16 @@
+/*
+* @desc Controller for the notes data transfers
+*/
 // USING ASYNC HANDLER for the try catch for promises with async
 const asyncHandler = require('express-async-handler');
-
+// importing the Note model
+const Note = require('../models/noteModel')
 // @desc Get Goals
 // @route GET /api/goals
 // @access Private
 const getNotes = asyncHandler(async (req,res) => {
-    res.json({
-        message: "Get Notes"
-    });
+    const notes = await Note.find();
+    res.json(notes);
 });
 
 // @desc Create Goal
@@ -19,27 +22,41 @@ const setNote = asyncHandler(async (req,res) => {
         res.status(400);
         throw new Error('Please add a text field');
     }
-    res.json({
-        message: "Set Note"
+
+    const note = await Note.create({
+        text: req.body.text
     });
+    res.json(note);
 });
 
 // @desc Update Goal
 // @route PUT /api/goals/id:
 // @access Private
 const updateNote = asyncHandler(async (req,res) => {
-    res.json({
-        message: `Update Note ${req.params.id}`
-    });
+
+    const note = await Note.findById(req.params.id);
+    if(!note) {
+        res.status(400);
+        throw new Error('Note not found');
+    }
+    console.log(req.params.id);
+    const updateNote = await Note.findByIdAndUpdate(req.params.id, req.body, {new:true});
+    res.json(updateNote);
+
 });
 
 // @desc Delete Goal
 // @route DELETE /api/goals/id:
 // @access Private
 const deleteNote = asyncHandler(async (req,res) => {
-    res.json({
-        message: `Delete Note ${req.params.id}`
-    });
+    const note = await Note.findById(req.params.id);
+    if(!note) {
+        res.status(400);
+        throw new Error('Note not found');
+    }
+    // remove is deprecated for mongodb, use deleteOne
+    await Note.deleteOne(note);
+    res.json({id: req.params.id});
 });
 // exporting the functions
 module.exports = {getNotes, setNote, updateNote, deleteNote};
