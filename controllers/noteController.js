@@ -17,7 +17,6 @@ const getNotes = asyncHandler(async (req,res) => {
 // @route POST /api/goals
 // @access Private
 const setNote = asyncHandler(async (req,res) => {
-    console.log(req.body); 
     if(!req.body.text) {
         res.status(400);
         throw new Error('Please add a text field');
@@ -39,7 +38,6 @@ const updateNote = asyncHandler(async (req,res) => {
         res.status(400);
         throw new Error('Note not found');
     }
-    console.log(req.params.id);
     const updateNote = await Note.findByIdAndUpdate(req.params.id, req.body, {new:true});
     res.json(updateNote);
 

@@ -16,8 +16,9 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({extended: false}));
 app.use(cors());
-// importing the routes for data transfer
+// importing the routes for CRUD operations
 app.use("/api/notes", require("./routes/noteRoutes"));
+app.use("/api/users", require("./routes/userRoutes"));
 // overwrites default express error handler
 app.use(errorHandler);
 // starting server
