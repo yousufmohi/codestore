@@ -3,13 +3,14 @@
 */
 // USING ASYNC HANDLER for the try catch for promises with async
 const asyncHandler = require('express-async-handler');
-// importing the Note model
-const Note = require('../models/noteModel')
+// importing the Note and user models
+const Note = require('../models/noteModel');
+const User = require('../models/userModel');
 // @desc Get Goals
 // @route GET /api/goals
 // @access Private
 const getNotes = asyncHandler(async (req,res) => {
-    const notes = await Note.find();
+    const notes = await Note.find({user: req.user.id});
     res.json(notes);
 });
 
@@ -23,7 +24,8 @@ const setNote = asyncHandler(async (req,res) => {
     }
 
     const note = await Note.create({
-        text: req.body.text
+        text: req.body.text,
+        user: req.user.id
     });
     res.json(note);
 });
@@ -32,11 +34,20 @@ const setNote = asyncHandler(async (req,res) => {
 // @route PUT /api/goals/id:
 // @access Private
 const updateNote = asyncHandler(async (req,res) => {
-
     const note = await Note.findById(req.params.id);
+    const user = await User.findById(req.user.id);
     if(!note) {
-        res.status(400);
+        res.status(401);
         throw new Error('Note not found');
+    }
+    if(!user) {
+        res.status(401);
+        throw new Error("User not found");
+    }
+
+    if(note.user.toString() !== user.id) {
+        res.status(401);
+        throw new Error("User not authorized");
     }
     const updateNote = await Note.findByIdAndUpdate(req.params.id, req.body, {new:true});
     res.json(updateNote);
@@ -48,9 +59,19 @@ const updateNote = asyncHandler(async (req,res) => {
 // @access Private
 const deleteNote = asyncHandler(async (req,res) => {
     const note = await Note.findById(req.params.id);
+    const user = await User.findById(req.user.id);
     if(!note) {
-        res.status(400);
+        res.status(401);
         throw new Error('Note not found');
+    }
+    if(!user) {
+        res.status(401);
+        throw new Error("User not found");
+    }
+
+    if(note.user.toString() !== user.id) {
+        res.status(401);
+        throw new Error("User not authorized");
     }
     // remove is deprecated for mongodb, use deleteOne
     await Note.deleteOne(note);

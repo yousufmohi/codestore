@@ -36,7 +36,6 @@ const registerUser = asyncHandler(async (req,res) => {
     password: hashedPassword
   });
   if(user) {
-    console.log(user);
     res.status(201).json({
       _id: user.id,
       name: user.name,
@@ -75,8 +74,11 @@ const loginUser = asyncHandler(async(req,res) => {
 // @route GET /api/users/user
 // @access Private
 const getUser = asyncHandler(async(req,res) => {
-  res.json({
-    message:"User Data"
+  const {_id,name,email} = await User.findById(req.user.id);
+  res.status(200).json({
+    id: _id,
+    name: name,
+    email: email
   });
 });
 
