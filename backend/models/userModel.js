@@ -1,5 +1,9 @@
+/*
+* @desc setting up model for User field in db
+*/
+// importing mongoose
 const mongoose = require('mongoose');
-
+// setting up the schema
 const userSchema = mongoose.Schema({
   name: {
     type: String,
@@ -17,5 +21,5 @@ const userSchema = mongoose.Schema({
 }, {
   timestamps: true
 });
-
+// exporting the schema
 module.exports = mongoose.model('User', userSchema);

@@ -1,9 +1,19 @@
+/*
+* @desc Controller for the user auth routes
+*/
 const asyncHandler = require('express-async-handler');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
 const User = require('../models/userModel');
-
-// /api/users
+// generates a token which has the payload data, secret key, and the expiration
+const generateToken = (id) => {
+  return jwt.sign({id},process.env.JWT_SECRET, {
+    expiresIn: '30d'
+  });
+};
+// @desc Create/Register User
+// @route POST /api/users
+// @access Public
 const registerUser = asyncHandler(async (req,res) => {
   const {name,email,password} = req.body;
   if(!name || !email || !password) {
@@ -16,24 +26,22 @@ const registerUser = asyncHandler(async (req,res) => {
     res.status(400);
     throw new Error('User already exists');
   }
-
-  // hashing password
-
+  // generating a salt and hashing the password 
   const salt = await bcrypt.genSalt(10);
   const hashedPassword = await bcrypt.hash(password,salt);
-
+  // creating a user
   const user = await User.create({
     name,
     email,
     password: hashedPassword
   });
-
   if(user) {
     console.log(user);
     res.status(201).json({
       _id: user.id,
       name: user.name,
-      email: user.email
+      email: user.email,
+      token: generateToken(user._id)
     });
   } else{
     res.status(400);
@@ -42,7 +50,9 @@ const registerUser = asyncHandler(async (req,res) => {
 
 });
 
-// /api/users/login
+// @desc Login user
+// @route POST /api/users/login
+// @access Public
 const loginUser = asyncHandler(async(req,res) => {
   const {email,password} = req.body;
   const user = await User.findOne({email});
@@ -52,17 +62,22 @@ const loginUser = asyncHandler(async(req,res) => {
     res.json({
       _id: user.id,
       name: user.name,
-      email: user.email
-    })
+      email: user.email,
+      token: generateToken(user._id)
+    });
   } else {
     res.status(400);
     throw new Error('Invalid credentials');
   }
 });
 
-// /api/users/user
+// @desc Get current user
+// @route GET /api/users/user
+// @access Private
 const getUser = asyncHandler(async(req,res) => {
-  res.json({message: 'Got User'});
+  res.json({
+    message:"User Data"
+  });
 });
 
 module.exports = {registerUser, loginUser, getUser};
