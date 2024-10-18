@@ -6,7 +6,7 @@ const express = require('express');
 const dotenv = require('dotenv').config();
 const {errorHandler} = require('./middleware/errorMiddleware');
 const cors = require('cors');
-const connectDB = require('../backend/config/db');
+const connectDB = require('./config/db');
 // PORT number from .env file, set to port 5000 if null
 const PORT = process.env.PORT || 5000;
 // connecting to the db
