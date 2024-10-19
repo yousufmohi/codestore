@@ -1,7 +1,9 @@
+"use client";
 import {React, useState} from 'react'
 import axios from "axios";
-
+import RegisterForm from '../components/RegisterForm';
 const Register = () => {
+
   const [name,setName] = useState("");
   const [email,setEmail] = useState("");
   const [password,setPassword] = useState("");
@@ -21,13 +23,7 @@ const Register = () => {
   }
   return (
     <div>
-      <h2>Register</h2>
-      <form onSubmit={handleSubmit}>
-        <input value={name} onChange={(e) => setName(e.target.value)} placeholder='name' required></input>
-        <input value={email} onChange={(e) => setEmail(e.target.value)} placeholder='email' required></input>
-        <input value={password} onChange={(e) => setPassword(e.target.value)} placeholder='password' required></input>
-        <button type='submit'>Register</button>
-      </form>
+      <RegisterForm/>
     </div>
   )
 
