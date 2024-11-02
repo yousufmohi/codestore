@@ -1,16 +1,12 @@
 import React from 'react'
 import DashBoard from './DashBoard'
-import { Navigate } from 'react-router-dom';
+import { NavComponent } from './NavComponent'
 function Notes() {
-  const logout = (e) => {
-    const token = localStorage.getItem("token");
-    localStorage.removeItem("token");
-  };
   return (
     <div>
-      <DashBoard/>
+      <NavComponent/>
       <h1>We Here in the notes</h1>
-      <button onClick={(e) => logout(e)}>Logout</button>
+      <DashBoard/>
     </div>
   )
 }

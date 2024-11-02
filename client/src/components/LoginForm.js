@@ -3,12 +3,13 @@ import '../index.css';
 import axios from "axios";
 import { AuthContext } from './AuthContext';
 import { toast } from 'react-hot-toast';
-
+import { useNavigate } from 'react-router-dom';
 const LoginForm = () => {
   const [email, setEmail] = useState(null);
   const [password, setPassword] = useState(null);
   const [errorMessage,setErrorMessage] = useState(null);
-  const {setToken} = useContext(AuthContext);
+  const {setToken,setName,setUserEmail} = useContext(AuthContext);
+  const navigate = useNavigate();  
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -19,8 +20,12 @@ const LoginForm = () => {
         password: password
       });
       setToken(response.data.token);
+      setName(response.data.name);
+      setUserEmail(response.data.email);
       localStorage.setItem("token", response.data.token);
+      navigate('/notes');  
     } catch (error) {
+      console.log(error);
       if(error.response && error.response.data) {
         setErrorMessage(error.response.data.message);
         toast.error(errorMessage);

@@ -1,8 +1,11 @@
 import React from 'react'
+import { NavComponent } from './NavComponent'
 
 function Home() {
   return (
-    <div>Home</div>
+    <div>
+      <NavComponent/>
+    </div>
   )
 }
 
