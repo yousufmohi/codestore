@@ -13,7 +13,6 @@ const LoginForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
     try {
       const response = await axios.post("http://localhost:5000/api/users/login", {
         email: email,
@@ -23,9 +22,10 @@ const LoginForm = () => {
       setName(response.data.name);
       setUserEmail(response.data.email);
       localStorage.setItem("token", response.data.token);
+      localStorage.setItem("email", response.data.email);
+      localStorage.setItem("name", response.data.name);
       navigate('/notes');  
     } catch (error) {
-      console.log(error);
       if(error.response && error.response.data) {
         setErrorMessage(error.response.data.message);
         toast.error(errorMessage);

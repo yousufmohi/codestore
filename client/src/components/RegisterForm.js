@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import '../index.css';
 import axios from "axios";
 import { toast } from 'react-hot-toast';
+import { NavComponent } from './NavComponent';
 
 const RegisterForm = () => {
 
@@ -25,7 +26,9 @@ const RegisterForm = () => {
   }
 
   return (
-    <div className="mt- max-w-md mx-auto p-6 bg-white rounded-lg shadow-md">
+    <div>
+      <NavComponent/>
+      <div className="mt- max-w-md mx-auto p-6 bg-white rounded-lg shadow-md">
       <h2 className="text-2xl font-bold mb-6 text-center">Register</h2>
       <form onSubmit={handleSubmit}>
         <div className="mb-4">
@@ -75,6 +78,8 @@ const RegisterForm = () => {
         </button>
       </form>
     </div>
+  </div>
+    
   );
 };
 

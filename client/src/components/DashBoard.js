@@ -12,7 +12,7 @@ const DashBoard = () => {
   }
 
   return (
-    <div>Protected Content</div>
+    <></>
   )
 }
 

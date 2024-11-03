@@ -1,18 +1,25 @@
-import React, { useContext } from "react";
-import { Avatar, Dropdown, Navbar } from "flowbite-react";
-import { useNavigate } from "react-router-dom";
-import { AuthContext } from "./AuthContext";
+import React, {useContext, useEffect, useState} from "react";
+import { Avatar, Dropdown, Navbar, Button } from "flowbite-react";
+import { useNavigate, useLocation} from "react-router-dom";
+
 export function NavComponent() {
-  const {name,userEmail} = useContext(AuthContext);
+  const name = localStorage.getItem("name");
+  const userEmail = localStorage.getItem("email");
   const isLoggedIn = localStorage.getItem("token") !== null;
   const navigate = useNavigate();
+  const location = useLocation();
+  const path = location.pathname;
+  
   const logout = () => {
-    if(!localStorage.getItem("token")) {
+    if(!localStorage.getItem("token") || !localStorage.getItem("name") || !localStorage.getItem("email")) {
       navigate("/");
     }
     localStorage.removeItem("token");
+    localStorage.removeItem("name");
+    localStorage.removeItem("email");
     navigate("/register");
   }
+
   return (
     <Navbar fluid rounded>
       <Navbar.Brand href="/">
@@ -36,14 +43,21 @@ export function NavComponent() {
         </Dropdown>
         <Navbar.Toggle />
       </div>}
-      
+      {!isLoggedIn && <div className="flex md:order-2">
+        <Button onClick={(e) => navigate('/register')}>Get started</Button>
+        <Navbar.Toggle />
+      </div>}
       <Navbar.Collapse>
-        <Navbar.Link href="#" active>
+        <Navbar.Link href="/" active={path === '/'}>
           Home
         </Navbar.Link>
-        <Navbar.Link href="#">Snippets</Navbar.Link>
-        <Navbar.Link href="#">About</Navbar.Link>
-        <Navbar.Link href="#">Contact</Navbar.Link>
+        <Navbar.Link href="/notes" active={path === '/notes'}>
+          Snippets
+        </Navbar.Link>
+        <Navbar.Link href="/about" active={path === '/about'}>
+          About
+        </Navbar.Link>
+        <Navbar.Link id="contact" href="#">Contact</Navbar.Link>
       </Navbar.Collapse>
     </Navbar>
   );
