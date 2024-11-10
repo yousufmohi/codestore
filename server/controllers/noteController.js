@@ -6,16 +6,16 @@ const asyncHandler = require('express-async-handler');
 // importing the Note and user models
 const Note = require('../models/noteModel');
 const User = require('../models/userModel');
-// @desc Get Goals
-// @route GET /api/goals
+// @desc Get notes
+// @route GET /api/notes
 // @access Private
 const getNotes = asyncHandler(async (req,res) => {
     const notes = await Note.find({user: req.user.id});
     res.json(notes);
 });
 
-// @desc Create Goal
-// @route POST /api/goals
+// @desc Create notes
+// @route POST /api/notes
 // @access Private
 const setNote = asyncHandler(async (req,res) => {
     if(!req.body.text) {
@@ -30,8 +30,8 @@ const setNote = asyncHandler(async (req,res) => {
     res.json(note);
 });
 
-// @desc Update Goal
-// @route PUT /api/goals/id:
+// @desc Update notes
+// @route PUT /api/notes/id:
 // @access Private
 const updateNote = asyncHandler(async (req,res) => {
     const note = await Note.findById(req.params.id);
@@ -54,8 +54,8 @@ const updateNote = asyncHandler(async (req,res) => {
 
 });
 
-// @desc Delete Goal
-// @route DELETE /api/goals/id:
+// @desc Delete notes
+// @route DELETE /api/notes/id:
 // @access Private
 const deleteNote = asyncHandler(async (req,res) => {
     const note = await Note.findById(req.params.id);

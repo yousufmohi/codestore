@@ -4,6 +4,7 @@ import axios from "axios";
 import { AuthContext } from './AuthContext';
 import { toast } from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
+import { NavComponent } from './NavComponent';
 const LoginForm = () => {
   const [email, setEmail] = useState(null);
   const [password, setPassword] = useState(null);
@@ -36,7 +37,9 @@ const LoginForm = () => {
     }
   }
   return (
-    <div className="mt-auto max-w-md mx-auto p-6 bg-white rounded-lg shadow-md">
+    <div>
+      <NavComponent/>
+      <div className="mt-auto max-w-md mx-auto p-6 bg-white rounded-lg shadow-md">
       <h2 className="text-2xl font-bold mb-6 text-center">Login</h2>
       <form onSubmit={handleSubmit}>
         <div className="mb-4">
@@ -73,6 +76,8 @@ const LoginForm = () => {
         </button>
       </form>
     </div>
+    </div>
+    
   );
 };
 
