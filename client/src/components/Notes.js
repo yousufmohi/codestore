@@ -5,32 +5,38 @@ import { AuthContext } from './AuthContext';
 import AxiosInstance from './AxiosInstance';
 import { useNavigate } from 'react-router-dom';
 import { Button } from 'flowbite-react';
+import Snippet from './Snippet';
 function Notes() {
-  const {token} = useContext(AuthContext);
-  const navigate = useNavigate();
   const[data,setData] = useState([]);
-  const [edit,setEdit] = useState(false);
   const url = AxiosInstance.getUri() + "notes";
 
   useEffect(() => {
     const fetchData = async () => {
-      console.log(url);
       const responseData = await AxiosInstance.get(url);
       setData(responseData.data);
    }
    fetchData();
   },[]);
 
-  const handleEdit = (id) => {
-    console.log(id);
+  const deleteData = async (id) => {
+    const deleteUrl = `${url}/${id}`;
+    console.log(deleteUrl);
+    const deleteResponse = await AxiosInstance.delete(deleteUrl)
+    console.log(deleteResponse);
   }
+  const handleDelete = (id) => {
+    deleteData(id);
+    window.location.reload();
+  };
+
+  const handleEdit = () => {
+    console.log("Editing");
+  };
   return (
     <div>
       <NavComponent/>
       <h1>We Here in the notes</h1>
-      <ul>
-
-      </ul>
+      <Snippet data={data} handles={[handleDelete,handleEdit]}/>
       <DashBoard/>
     </div>
   )
