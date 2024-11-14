@@ -25,6 +25,7 @@ const setNote = asyncHandler(async (req,res) => {
 
     const note = await Note.create({
         text: req.body.text,
+        title: req.body.title,
         user: req.user.id
     });
     res.json(note);

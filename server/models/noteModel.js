@@ -12,7 +12,11 @@ const noteSchema = mongoose.Schema({
   text: {
     type: String,
     required: [true,'Please add a text value']
-  }
+  },
+  title: {
+    type: String,
+    required: [true,'Please add a title']
+  },
 }, {
   timestamps: true
 });
