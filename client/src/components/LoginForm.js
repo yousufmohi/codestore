@@ -1,16 +1,17 @@
-import React, {useState,useContext} from 'react';
+import React, {useState,useContext, useEffect} from 'react';
 import '../index.css';
 import axios from "axios";
 import { AuthContext } from './AuthContext';
 import { toast } from 'react-hot-toast';
-import { useNavigate } from 'react-router-dom';
+import { Navigate, useNavigate } from 'react-router-dom';
 import { NavComponent } from './NavComponent';
+import DashBoard from './DashBoard';
 const LoginForm = () => {
+  const {token,setToken,setName,setUserEmail} = useContext(AuthContext);
+  const navigate = useNavigate();
   const [email, setEmail] = useState(null);
   const [password, setPassword] = useState(null);
   const [errorMessage,setErrorMessage] = useState(null);
-  const {setToken,setName,setUserEmail} = useContext(AuthContext);
-  const navigate = useNavigate();  
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -40,6 +41,7 @@ const LoginForm = () => {
     <div>
       <NavComponent/>
       <div className="mt-auto max-w-md mx-auto p-6 bg-white rounded-lg shadow-md">
+      {token && <Navigate to="/notes" replace/>}
       <h2 className="text-2xl font-bold mb-6 text-center">Login</h2>
       <form onSubmit={handleSubmit}>
         <div className="mb-4">

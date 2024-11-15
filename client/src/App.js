@@ -6,6 +6,8 @@ import RegisterForm from './components/RegisterForm';
 import Notes from './components/Notes';
 import About from './components/About';
 import { NavComponent } from './components/NavComponent';
+import SnippetPage from './components/SnippetPage';
+import CreatePage from './components/CreatePage';
 
 const NotFound = () => {
   return (
@@ -24,6 +26,8 @@ function App() {
       <Route path="/register" element={<RegisterForm/>} />
       <Route path="/notes" element={<Notes/>} />
       <Route path="/about" element={<About/>} />
+      <Route path="/snippet" element={<SnippetPage/>} />
+      <Route path="/create" element={<CreatePage/>} />
       <Route path='*' element={<div><NavComponent/><NotFound/></div>}/>
     </Routes>
   );
