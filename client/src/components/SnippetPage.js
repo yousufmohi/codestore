@@ -8,14 +8,12 @@ function SnippetPage() {
   const[data,setData] = useState([]);
 
   const ID = localStorage.getItem("CodeID");
-  console.log(ID);
   const url = AxiosInstance.getUri() + "notes";
 
   useEffect(() => {
     const fetchData = async () => {
       const responseData = await AxiosInstance.get(url).then((res) => setData(res.data)).catch((err) => {
-        console.log(err);
-      });
+    });
    }
    fetchData();
   },[]);

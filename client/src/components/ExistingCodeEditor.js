@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from "react";
 import Editor from '@monaco-editor/react';
 import { Button, Dropdown } from "flowbite-react";
-
 import AxiosInstance from "./AxiosInstance";
+import TitleEditor from "./TitleEditor";
+
 const ExistingCodeEditor = (props) => {
   const url = AxiosInstance.getUri() + "notes/" + props.id;
   const [code,setCode] = useState("// some comment");
+  const [title, setTitle] = useState('');  
   const [language,setLanguage] = useState("javascript");
   useEffect(() => {
     if (props.data && props.data.length > 0) {
@@ -21,6 +23,7 @@ const ExistingCodeEditor = (props) => {
   }
 
   const updateCode = async() => {
+    console.log(title);
     const snippet = props.data.find(item => item._id === props.id);
     snippet.text = code;
     const responseData = await AxiosInstance.put(url, snippet);
@@ -37,6 +40,7 @@ const ExistingCodeEditor = (props) => {
 
   return (
     <div>
+      <TitleEditor value={title} setValue={setTitle} />
       <div className="border-solid border-4 border-gray-600">
         <Editor  
           theme="light" 
