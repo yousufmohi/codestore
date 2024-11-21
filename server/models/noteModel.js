@@ -17,6 +17,10 @@ const noteSchema = mongoose.Schema({
     type: String,
     required: [true,'Please add a title']
   },
+  language: {
+    type: String,
+    required: [true,'Please add a language']
+  },
 }, {
   timestamps: true
 });

@@ -3,17 +3,20 @@ import Editor from '@monaco-editor/react';
 import { Button, Dropdown } from "flowbite-react";
 import AxiosInstance from "./AxiosInstance";
 import TitleEditor from "./TitleEditor";
+import { toast } from 'react-hot-toast';
 
 const ExistingCodeEditor = (props) => {
   const url = AxiosInstance.getUri() + "notes/" + props.id;
   const [code,setCode] = useState("// some comment");
   const [title, setTitle] = useState('');  
-  const [language,setLanguage] = useState("javascript");
+  const [language,setLanguage] = useState("");
   useEffect(() => {
     if (props.data && props.data.length > 0) {
       const snippet = props.data.find(item => item._id === props.id);
       if (snippet) {
         setCode(snippet.text);
+        setTitle(snippet.title);
+        setLanguage(snippet.language);
       }
     }
   }, [props.data, props.id]);
@@ -23,11 +26,12 @@ const ExistingCodeEditor = (props) => {
   }
 
   const updateCode = async() => {
-    console.log(title);
     const snippet = props.data.find(item => item._id === props.id);
     snippet.text = code;
+    snippet.title = title;
+    snippet.language = language;
     const responseData = await AxiosInstance.put(url, snippet);
-    console.log(responseData);
+    toast.success("Saved");
   }
 
   function capitalize(s) {
