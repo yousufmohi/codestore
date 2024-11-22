@@ -45,7 +45,7 @@ const ExistingCodeEditor = (props) => {
   return (
     <div>
       <TitleEditor value={title} setValue={setTitle} />
-      <div className="border-solid border-4 border-gray-600">
+      <div className="border-solid border-4 w-[100rem] m-auto border-gray-600">
         <Editor  
           theme="light" 
           height="50vh" 

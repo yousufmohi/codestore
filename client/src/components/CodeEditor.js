@@ -31,8 +31,8 @@ const CodeEditor = () => {
   }
   return (
     <div>
-    <TitleEditor value={title} setValue={setTitle} />
-      <div className="border-solid border-4 border-gray-600">
+    <TitleEditor placeholder="New Page" value={title} setValue={setTitle} />
+      <div className="border-solid border-4  w-[100rem] border-gray-600">
         <Editor  
           theme="light" 
           height="50vh" 
