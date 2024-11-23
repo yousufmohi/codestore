@@ -43,12 +43,12 @@ const ExistingCodeEditor = (props) => {
   }
 
   return (
-    <div>
+    <div className="w-[100rem] content-center m-auto">
       <TitleEditor value={title} setValue={setTitle} />
-      <div className="border-solid border-4 w-[100rem] m-auto border-gray-600">
+      <div className="border-solid border-2 w-[82.5vw]  border-gray-600">
         <Editor  
           theme="light" 
-          height="50vh" 
+          height="50vh"
           defaultLanguage={language} 
           language={language}
           defaultValue={code}
@@ -58,7 +58,7 @@ const ExistingCodeEditor = (props) => {
           }}
           />
       </div>
-      <div className=" mr-5 mt-4 flex gap-3 justify-end">
+      <div className="m-auto">
       <Button onClick={updateCode}>Save</Button>
       <Dropdown label={capitalize(language)} dismissOnClick={true}>
         <Dropdown.Item onClick={() => setLanguage("javascript")}>Javascript</Dropdown.Item>
