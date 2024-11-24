@@ -30,9 +30,9 @@ const CodeEditor = () => {
     postData();
   }
   return (
-    <div className="w-[100rem] m-auto">
+    <div className="flex flex-col items-center justify-center">
     <TitleEditor placeholder="New Page" value={title} setValue={setTitle} />
-      <div className="border-solid border-4   border-gray-600">
+      <div className="border-solid border-2 w-[82.5vw]  border-gray-600">
         <Editor  
           theme="light" 
           height="50vh" 
@@ -45,7 +45,7 @@ const CodeEditor = () => {
           }}
           />
       </div>
-      <div className=" mr-5 mt-4 flex gap-3 justify-end">
+      <div className="flex gap-3 w-[82.5vw] mt-4 justify-end">
       <Button onClick={saveCode}>Save</Button>
       <Dropdown label={capitalize(language)} dismissOnClick={true}>
         <Dropdown.Item onClick={() => setLanguage("javascript")}>Javascript</Dropdown.Item>

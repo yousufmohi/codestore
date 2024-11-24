@@ -78,6 +78,7 @@ const LoginForm = () => {
         </button>
       </form>
     </div>
+    <DashBoard/>
     </div>
     
   );
