@@ -21,21 +21,32 @@ function Notes() {
     navigate("/snippet");
   }; 
 
+  const deleteSnippet = async (id) => {
+    const newURL = `${url}/${id}`;
+    const responseData = await AxiosInstance.delete(newURL);
+    window.location.reload();
+  }
   const createSnippet = () => {
     navigate("/create");
   };
   return (
     <div>
       <NavComponent/>
-      <ul>
-        {data.map((item,i) => {
-          return(
-            <Button onClick={() => handleCodeClick(item._id)} key={i}>{item.title}</Button>
-          )
-        })}
-      </ul>
+      <div className='mx-auto w-[40.5vw]'>
+        <ul>
+          {data.map((item,i) => {
+            return(
+              <div className='flex flex-row justify-between'>
+                <button onClick={() => handleCodeClick(item._id)} key={i}>{item.title}</button>
+                <button onClick={() => deleteSnippet(item._id)}>Delete</button>
+              </div>
+            )
+          })}
+        </ul>
+        <DashBoard/>
+      </div>
       <Button onClick={createSnippet}>Create</Button>
-      <DashBoard/>
+
     </div>
   )
 }

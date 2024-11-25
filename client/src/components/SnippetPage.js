@@ -13,6 +13,7 @@ function SnippetPage() {
   useEffect(() => {
     const fetchData = async () => {
       const responseData = await AxiosInstance.get(url).then((res) => setData(res.data)).catch((err) => {
+        console.log(err);
     });
    }
    fetchData();

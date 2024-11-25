@@ -3,7 +3,7 @@ import Editor from '@monaco-editor/react';
 import { Button, Dropdown } from "flowbite-react";
 import AxiosInstance from "./AxiosInstance";
 import TitleEditor from "./TitleEditor";
-
+import { toast } from 'react-hot-toast';
 const CodeEditor = () => {
   const url = AxiosInstance.getUri() + "notes";
   const [code,setCode] = useState("// some comment");
@@ -20,7 +20,7 @@ const CodeEditor = () => {
         language: language
       };
       const responseData = await AxiosInstance.post(url,data);
-      console.log(responseData);
+      toast.success('Saved');
   }
 
   function capitalize(s) {
