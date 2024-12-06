@@ -37,8 +37,6 @@ export function NavComponent() {
             <span className="block text-sm">{name}</span>
             <span className="block truncate text-sm font-medium">{userEmail}</span>
           </Dropdown.Header>
-          <Dropdown.Item>Settings</Dropdown.Item>
-          <Dropdown.Divider />
           <Dropdown.Item onClick={logout}>Sign out</Dropdown.Item>
         </Dropdown>
         <Navbar.Toggle />

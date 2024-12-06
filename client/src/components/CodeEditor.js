@@ -14,11 +14,15 @@ const CodeEditor = () => {
   }
 
   const postData = async() => {
+      if(!title) {
+        setTitle("Untitled");
+      } 
       const data = {
         text: code,
         title: title,
         language: language
       };
+
       const responseData = await AxiosInstance.post(url,data);
       toast.success('Saved');
   }
