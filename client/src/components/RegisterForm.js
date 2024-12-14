@@ -1,14 +1,22 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import '../index.css';
 import axios from "axios";
 import { toast } from 'react-hot-toast';
 import { NavComponent } from './NavComponent';
-
+import DashBoard from './DashBoard';
+import { useNavigate } from 'react-router-dom';
 const RegisterForm = () => {
-
+  const navigate = useNavigate();
   const [name,setName] = useState("");
   const [email,setEmail] = useState("");
   const [password,setPassword] = useState("");
+
+  useEffect(() => {
+    if(localStorage.getItem("token")){
+      navigate("/");
+    }
+  },[])
+  
   const handleSubmit = async (e) => {
     e.preventDefault();
     const DTO = {
@@ -78,8 +86,8 @@ const RegisterForm = () => {
         </button>
       </form>
     </div>
+    <DashBoard/>
   </div>
-    
   );
 };
 

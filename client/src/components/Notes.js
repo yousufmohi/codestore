@@ -47,7 +47,7 @@ function Notes() {
               <div className='flex flex-row justify-between'>
                 <div className='flex mt-3'>
                   <img src={images[item.language]} alt={item.language} className='w-5 mr-6 object-contain'/>
-                  <button onClick={() => handleCodeClick(item._id)} key={i}>{item.title}</button>
+                  <button className='hover:border-b-[1.5px] hover:border-dashed hover:border-black' onClick={() => handleCodeClick(item._id)} key={i}>{item.title}</button>
                 </div>
                 <button onClick={() => deleteSnippet(item._id)}>Delete</button>
               </div>
@@ -55,8 +55,8 @@ function Notes() {
           })}
         </ul>
         <div className="flex justify-end mt-8">
-          <button onClick={createSnippet} className="px-4 py-2 bg-blue-500 text-white rounded">
-            Create
+          <button onClick={createSnippet} className="px-4 py-2 bg-black text-white rounded">
+            Create Snippet
           </button>
         </div>
 

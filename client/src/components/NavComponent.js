@@ -58,10 +58,6 @@ export function NavComponent() {
         <Navbar.Link href="/notes" active={path === '/notes'}>
           Snippets
         </Navbar.Link>
-        <Navbar.Link href="/about" active={path === '/about'}>
-          About
-        </Navbar.Link>
-        <Navbar.Link id="contact" href="#">Contact</Navbar.Link>
       </Navbar.Collapse>
     </Navbar>
   );

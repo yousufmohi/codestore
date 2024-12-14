@@ -4,7 +4,6 @@ import Home from './components/Home';
 import { Routes, Route } from 'react-router-dom';
 import RegisterForm from './components/RegisterForm';
 import Notes from './components/Notes';
-import About from './components/About';
 import { NavComponent } from './components/NavComponent';
 import SnippetPage from './components/SnippetPage';
 import CreatePage from './components/CreatePage';
@@ -25,7 +24,6 @@ function App() {
       <Route path="/login" element={<LoginForm />} />
       <Route path="/register" element={<RegisterForm/>} />
       <Route path="/notes" element={<Notes/>} />
-      <Route path="/about" element={<About/>} />
       <Route path="/snippet" element={<SnippetPage/>} />
       <Route path="/create" element={<CreatePage/>} />
       <Route path='*' element={<div><NavComponent/><NotFound/></div>}/>
