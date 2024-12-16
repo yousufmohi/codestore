@@ -39,7 +39,7 @@ const ExistingCodeEditor = (props) => {
     snippet.text = code;
     snippet.title = title;
     snippet.language = language;
-    const responseData = await AxiosInstance.put(url, snippet);
+    await AxiosInstance.put(url, snippet).catch((err) => { console.error(err); });
     toast.success("Saved");
   }
 

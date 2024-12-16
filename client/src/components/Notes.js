@@ -14,11 +14,15 @@ function Notes() {
   };
   useEffect(() => {
     const fetchData = async () => {
-      const responseData = await AxiosInstance.get(url);
+      if(!localStorage.getItem("token")) {
+        navigate("/login");
+        return;
+      }
+      const responseData = await AxiosInstance.get(url).catch((err) => console.error(err));
       setData(responseData.data);
    }
    fetchData();
-  },[]);
+  },[url,navigate]);
 
   const handleCodeClick = (id) => {
     localStorage.setItem("CodeID",id);
@@ -27,7 +31,7 @@ function Notes() {
 
   const deleteSnippet = async (id) => {
     const newURL = `${url}/${id}`;
-    const responseData = await AxiosInstance.delete(newURL);
+    await AxiosInstance.delete(newURL).catch((err) => console.error(err));
     window.location.reload();
   }
   const createSnippet = () => {

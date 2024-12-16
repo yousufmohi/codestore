@@ -1,4 +1,4 @@
-import React, {useState,useContext, useEffect} from 'react';
+import React, {useState,useContext} from 'react';
 import '../index.css';
 import axios from "axios";
 import { AuthContext } from './AuthContext';
@@ -38,9 +38,9 @@ const LoginForm = () => {
     }
   }
   return (
-    <div>
+    <div className='h-screen bg-gray-100'>
       <NavComponent/>
-      <div className="mt-auto max-w-md mx-auto p-6 bg-white rounded-lg shadow-md">
+      <div className="mt-[14.5rem] max-w-md w-72 mx-auto p-6 bg-white rounded-lg shadow-lg">
       {token && <Navigate to="/notes" replace/>}
       <h2 className="text-2xl font-bold mb-6 text-center">Login</h2>
       <form onSubmit={handleSubmit}>
@@ -51,20 +51,20 @@ const LoginForm = () => {
           <input
             type="email"
             id="email"
-            className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2 focus:outline-none focus:ring focus:ring-black"
+            className="mt-1 block w-full border h-8 border-gray-300 rounded-md shadow-sm p-2 focus:outline-none focus:ring focus:ring-black"
             onChange={(e) => setEmail(e.target.value)}
             required
           />
         </div>
 
         <div className="mb-4">
-          <label className="block text-sm font-medium text-gray-700" htmlFor="email">
+          <label className="block text-sm font-medium  text-gray-700" htmlFor="email">
             Password
           </label>
           <input
             type="password"
             id="password"
-            className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2 focus:outline-none focus:ring focus:ring-black"
+            className="mt-1 block w-full border h-8 border-gray-300 rounded-md shadow-sm p-2 focus:outline-none focus:ring focus:ring-black"
             onChange={(e) => setPassword(e.target.value)}
             required 
           />
@@ -79,8 +79,7 @@ const LoginForm = () => {
       </form>
     </div>
     <DashBoard/>
-    </div>
-    
+    </div>  
   );
 };
 

@@ -25,7 +25,8 @@ export function NavComponent() {
       <Navbar.Brand href="/">
         <span className="self-center whitespace-nowrap text-xl font-semibold dark:text-white">Codestore</span>
       </Navbar.Brand>
-      {isLoggedIn && <div className="flex md:order-2">
+      <div className="flex md:order-2">
+      {isLoggedIn && 
         <Dropdown
           arrowIcon={false}
           inline
@@ -38,9 +39,9 @@ export function NavComponent() {
             <span className="block truncate text-sm font-medium">{userEmail}</span>
           </Dropdown.Header>
           <Dropdown.Item onClick={logout}>Sign out</Dropdown.Item>
-        </Dropdown>
+        </Dropdown>}
         <Navbar.Toggle />
-      </div>}
+      </div>
       {!isLoggedIn && <div className="order-2 hidden items-center md:flex">
         <a
             href="/login"
@@ -48,17 +49,19 @@ export function NavComponent() {
           >
             Login
           </a>
-        <Button  color="dark" onClick={(e) => navigate('/register')}>Get Started</Button>
-        <Navbar.Toggle />
+        <Button  color="dark" onClick={(e) => navigate('/')}>Get Started</Button>
       </div>}
-      <Navbar.Collapse>
-        <Navbar.Link href="/" active={path === '/'}>
-          Home
-        </Navbar.Link>
-        <Navbar.Link href="/notes" active={path === '/notes'}>
-          Snippets
-        </Navbar.Link>
-      </Navbar.Collapse>
+      <div className="m-auto">
+        <Navbar.Collapse>
+          <Navbar.Link href="/" active={path === '/'}>
+            Home
+          </Navbar.Link>
+          <Navbar.Link href="/notes" active={path === '/notes'}>
+            Snippets
+          </Navbar.Link>
+        </Navbar.Collapse>
+      </div>
+
     </Navbar>
   );
 }

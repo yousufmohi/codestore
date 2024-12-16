@@ -15,7 +15,7 @@ const RegisterForm = () => {
     if(localStorage.getItem("token")){
       navigate("/");
     }
-  },[])
+  },[navigate])
   
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -25,8 +25,7 @@ const RegisterForm = () => {
       password:password
     }
     try {
-      const response = await axios.post("http://localhost:5000/api/users/", DTO);
-      console.log(response);
+      await axios.post("http://localhost:5000/api/users/", DTO).catch((err) => {console.error(err)});
       toast.success("User Registered")
     } catch(error) {
       toast.error(error.response.data.message);

@@ -2,7 +2,6 @@ import React, {useEffect, useState } from 'react'
 import { NavComponent } from './NavComponent'
 import ExistingCodeEditor from './ExistingCodeEditor'
 import AxiosInstance from './AxiosInstance';
-import DashBoard from './DashBoard';
 
 function SnippetPage() {
   const[data,setData] = useState([]);
@@ -12,12 +11,12 @@ function SnippetPage() {
 
   useEffect(() => {
     const fetchData = async () => {
-      const responseData = await AxiosInstance.get(url).then((res) => setData(res.data)).catch((err) => {
-        console.log(err);
+      await AxiosInstance.get(url).then((res) => setData(res.data)).catch((err) => {
+        console.error(err);
     });
    }
    fetchData();
-  },[]);
+  },[url]);
 
   return (
     <div>

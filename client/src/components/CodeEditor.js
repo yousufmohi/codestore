@@ -23,7 +23,7 @@ const CodeEditor = () => {
         language: language
       };
 
-      const responseData = await AxiosInstance.post(url,data);
+      await AxiosInstance.post(url,data).catch((err) => console.error(err));
       toast.success('Saved');
   }
 
