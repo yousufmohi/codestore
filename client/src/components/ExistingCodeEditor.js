@@ -32,7 +32,7 @@ const ExistingCodeEditor = (props) => {
     setCopyText('Copied!')
     setTimeout(()=> {
       setCopyText('Copy');
-    },2000);
+    }, 2000);
   }
   const updateCode = async() => {
     const snippet = props.data.find(item => item._id === props.id);

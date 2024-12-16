@@ -3,6 +3,7 @@ import '../index.css';
 const AuthContext = createContext();
 
 const AuthProvider = ({ children }) => {
+  // sets the initial states for auth related variables
   const [token, setToken] = useState(null);
   const [loading, setLoading] = useState(true); 
   const [name,setName] = useState(null);

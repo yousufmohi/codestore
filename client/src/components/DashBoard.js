@@ -8,7 +8,7 @@ const DashBoard = () => {
   }
 
   if(!token) {
-    return <Navigate to="/" replace/>
+    return <Navigate to="/register" replace/>
   }
 
   return (

@@ -3,8 +3,8 @@ import '../index.css';
 import axios from "axios";
 import { toast } from 'react-hot-toast';
 import { NavComponent } from './NavComponent';
-import DashBoard from './DashBoard';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+
 const RegisterForm = () => {
   const navigate = useNavigate();
   const [name,setName] = useState("");
@@ -33,9 +33,9 @@ const RegisterForm = () => {
   }
 
   return (
-    <div>
+    <div className='h-screen bg-gray-100'>
       <NavComponent/>
-      <div className="mt- max-w-md mx-auto p-6 bg-white rounded-lg shadow-md">
+      <div className="mt-[14.5rem] max-w-md w-72 mx-auto  p-6 bg-white rounded-lg shadow-lg">
       <h2 className="text-2xl font-bold mb-6 text-center">Register</h2>
       <form onSubmit={handleSubmit}>
         <div className="mb-4">
@@ -45,7 +45,7 @@ const RegisterForm = () => {
           <input
             type="text"
             id="name"
-            className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2 focus:outline-none focus:ring focus:ring-black"
+            className="mt-1 block text-sm w-full border  h-8 border-gray-300 rounded-md shadow-sm p-2 focus:outline-none focus:ring focus:ring-black"
             onChange={(e) => setName(e.target.value)}
             required
           />
@@ -58,7 +58,7 @@ const RegisterForm = () => {
           <input
             type="email"
             id="email"
-            className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2 focus:outline-none focus:ring focus:ring-black"
+            className="mt-1 block text-sm w-full border h-8 border-gray-300 rounded-md shadow-sm p-2 focus:outline-none focus:ring focus:ring-black"
             onChange={(e) => setEmail(e.target.value)}
             required
           />
@@ -71,7 +71,7 @@ const RegisterForm = () => {
           <input
             type="password"
             id="password"
-            className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2 focus:outline-none focus:ring focus:ring-black"
+            className="mt-1 block w-full text-sm border h-8 border-gray-300 rounded-md shadow-sm p-2 focus:outline-none focus:ring focus:ring-black"
             onChange={(e) => setPassword(e.target.value)}
             required 
           />
@@ -79,13 +79,13 @@ const RegisterForm = () => {
 
         <button
           type="submit"
-          className="w-24 bg-black text-white font-semibold py-2 rounded-md "
+          className="w-24 bg-black h-8 text-white font-semibold rounded-md"
         >
           Register
         </button>
       </form>
+      <p className=' mt-3 text-sm'>Already have an account? <span className='ont-medium text-blue-600 dark:text-blue-500 hover:underline'><Link to={'/login'}>Log In</Link></span></p>
     </div>
-    <DashBoard/>
   </div>
   );
 };

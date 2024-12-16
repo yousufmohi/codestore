@@ -31,7 +31,7 @@ export function NavComponent() {
           arrowIcon={false}
           inline
           label={
-            <Avatar alt="User settings" img="https://live.staticflickr.com/2918/14252895345_8180381186_h.jpg" rounded />
+            <Avatar alt="User settings" img="https://cdn-icons-png.flaticon.com/512/1802/1802977.png" rounded />
           }
         >
           <Dropdown.Header>
@@ -49,7 +49,7 @@ export function NavComponent() {
           >
             Login
           </a>
-        <Button  color="dark" onClick={(e) => navigate('/')}>Get Started</Button>
+        <Button color="dark" onClick={(e) => navigate('/register')}>Get Started</Button>
       </div>}
       <div className="m-auto">
         <Navbar.Collapse>

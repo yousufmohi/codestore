@@ -1,17 +1,23 @@
-import React, {useState,useContext} from 'react';
+import React, {useState,useContext, useEffect} from 'react';
 import '../index.css';
 import axios from "axios";
 import { AuthContext } from './AuthContext';
 import { toast } from 'react-hot-toast';
-import { Navigate, useNavigate } from 'react-router-dom';
+import { Link, Navigate, useNavigate } from 'react-router-dom';
 import { NavComponent } from './NavComponent';
-import DashBoard from './DashBoard';
+
 const LoginForm = () => {
   const {token,setToken,setName,setUserEmail} = useContext(AuthContext);
   const navigate = useNavigate();
   const [email, setEmail] = useState(null);
   const [password, setPassword] = useState(null);
   const [errorMessage,setErrorMessage] = useState(null);
+
+  useEffect(() => {
+    if(localStorage.getItem("token")) {
+      navigate('/');
+    }
+  });
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -51,7 +57,7 @@ const LoginForm = () => {
           <input
             type="email"
             id="email"
-            className="mt-1 block w-full border h-8 border-gray-300 rounded-md shadow-sm p-2 focus:outline-none focus:ring focus:ring-black"
+            className="mt-1 text-sm backdrop:block w-full border h-8 border-gray-300 rounded-md shadow-sm p-2 focus:outline-none focus:ring focus:ring-black"
             onChange={(e) => setEmail(e.target.value)}
             required
           />
@@ -72,13 +78,13 @@ const LoginForm = () => {
 
         <button
           type="submit"
-          className="w-24 bg-black text-white font-semibold py-2 rounded-md "
+          className="w-24 bg-black h-8 text-white font-semibold rounded-md"
         >
           Submit
         </button>
       </form>
+      <p className=' mt-3 text-sm'>Don't have an account? <span className='ont-medium text-blue-600 dark:text-blue-500 hover:underline'><Link to={'/register'}>Register</Link></span></p>
     </div>
-    <DashBoard/>
     </div>  
   );
 };
