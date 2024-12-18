@@ -29,6 +29,7 @@ const setNote = asyncHandler(async (req,res) => {
         language: req.body.language,
         user: req.user.id
     });
+
     res.json(note);
 });
 

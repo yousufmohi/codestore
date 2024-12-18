@@ -8,7 +8,7 @@ const User = require('../models/userModel');
 // generates a token which has the payload data, secret key, and the expiration
 const generateToken = (id) => {
   return jwt.sign({id},process.env.JWT_SECRET, {
-    expiresIn: '30d'
+    expiresIn: '100d'
   });
 };
 // @desc Create/Register User

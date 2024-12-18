@@ -1,0 +1,25 @@
+{
+  "name": "tests",
+  "version": "1.0.0",
+  "main": "index.js",
+  "type": "module",
+  "moduleNameMapper": {
+    "^axios$": "axios/dist/node/axios.cjs"
+  },
+  "scripts": {
+    "test": "jest"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "jest": "^29.7.0"
+  },
+  "dependencies": {
+    "@babel/core": "^7.26.0",
+    "@babel/preset-env": "^7.26.0",
+    "axios": "^1.7.9",
+    "babel-jest": "^29.7.0"
+  }
+}

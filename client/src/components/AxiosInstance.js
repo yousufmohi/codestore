@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios from 'axios'
 // created instance with preset url
 let AxiosInstance = axios.create({
   //set PORT to the port your API uses
