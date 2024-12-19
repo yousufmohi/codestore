@@ -19,6 +19,7 @@
   "dependencies": {
     "@babel/core": "^7.26.0",
     "@babel/preset-env": "^7.26.0",
+    "@types/jest": "^29.5.14",
     "axios": "^1.7.9",
     "babel-jest": "^29.7.0"
   }

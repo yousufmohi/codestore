@@ -11,18 +11,38 @@ let AxiosInstance = axios.create({
 //   return config;
 // });
 
-const url =  "http://localhost:5000/api/" + "users/";
+const url =  "http://localhost:5000/api/";
 
 
 const DTO = {
-  name: "Johns",
-  email: "johns@mail.com",
+  name: "John",
+  email: "john@mail.com",
   password: "johnny"
 }
-axios.post(url,DTO).then((res) => console.log(res));
 
+describe('User operations test', () => {
 
+  test('Registering a User', async () => {
+    const existsMessage = 'User already exists';
+    await axios.post(url + "users/",DTO)
+    .then((res) => expect(res.status).toBe(201))
+    .catch((err) => {
+      if (err.response) {
+        expect(err.response.data.message).toBe(existsMessage);
+      }
+    });
+  });
 
-test('test', () => {
-  expect(1===1);
+  test('User logs in', async () => {
+    var status;
+    await axios.post(url + "users/login",{email:DTO.email,password: DTO.password})
+    .then((res) => {status = res.status})
+    .catch((err) => {
+      if(err.response) {
+        status = err.response.status;
+      }
+    });
+    expect(status).toBe(201);
+  });
+
 });
