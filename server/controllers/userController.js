@@ -70,16 +70,6 @@ const loginUser = asyncHandler(async(req,res) => {
   }
 });
 
-// @desc Get current user
-// @route GET /api/users/user
-// @access Private
-const getUser = asyncHandler(async(req,res) => {
-  const {_id,name,email} = await User.findById(req.user.id);
-  res.status(200).json({
-    id: _id,
-    name: name,
-    email: email
-  });
-});
 
-module.exports = {registerUser, loginUser, getUser};
+
+module.exports = {registerUser, loginUser};
