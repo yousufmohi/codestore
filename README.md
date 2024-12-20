@@ -90,8 +90,8 @@ To run tests, run the following command
 
 #### Creates and sets a code snipppet
 
-```http
-  [API Index](POST /api/notes/)
+```markdown
+  POST /api/notes/
 ```
 
 | Parameter | Type     | Description                       |
