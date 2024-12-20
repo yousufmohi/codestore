@@ -5,15 +5,15 @@ CodeStore is an application meant for storing code snippets. Imagine you want to
 
 ## Built With
 
-* [![Node.js][Node.js]][Node-url] 
+[![Node.js][Node.js]][Node-url] 
 
-* [![React][React.js]][React-url]
+[![React][React.js]][React-url]
 
-* [![MongoDB][MongoDB]][MongoDB-url]
+[![MongoDB][MongoDB]][MongoDB-url]
 
-* [![Express.js][Express.js]][Express-url]
+[![Express.js][Express.js]][Express-url]
 
-* [![Tailwind CSS][TailwindCSS]][TailwindCSS-url]
+[![Tailwind CSS][TailwindCSS]][TailwindCSS-url]
  
 ## Run Locally
 
