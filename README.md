@@ -80,7 +80,7 @@ To run tests, run the following command
 
 #### Gets all the code snippets
 
-```http
+```markdown
   GET /api/notes
 ```
 
@@ -100,7 +100,7 @@ To run tests, run the following command
 
 #### Updates an existing code snippet
 
-```http
+```markdown
   PUT /api/notes/{id}
 ```
 
@@ -110,7 +110,7 @@ To run tests, run the following command
 
 #### Deletes an existing code snippet
 
-```http
+```markdown
   DELETE /api/notes/{id}
 ```
 
@@ -121,7 +121,7 @@ To run tests, run the following command
 
 #### Creates and registers a user
 
-```http
+```markdown
   POST /api/users/
 ```
 
@@ -132,7 +132,7 @@ To run tests, run the following command
 
 #### Logs a user in
 
-```http
+```markdown
   POST /api/users/login
 ```
 
