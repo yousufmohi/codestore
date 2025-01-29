@@ -2,7 +2,11 @@
 
 #### Gets all the code snippets
 
+<<<<<<< HEAD
 ```http
+=======
+```markdown
+>>>>>>> cc7135455c556ead94a458265ea717c580db6508
   GET /api/notes
 ```
 
@@ -12,7 +16,11 @@
 
 #### Creates and sets a code snipppet
 
+<<<<<<< HEAD
 ```http
+=======
+```markdown
+>>>>>>> cc7135455c556ead94a458265ea717c580db6508
   POST /api/notes/
 ```
 
@@ -22,7 +30,11 @@
 
 #### Updates an existing code snippet
 
+<<<<<<< HEAD
 ```http
+=======
+```markdown
+>>>>>>> cc7135455c556ead94a458265ea717c580db6508
   PUT /api/notes/{id}
 ```
 
@@ -32,7 +44,11 @@
 
 #### Deletes an existing code snippet
 
+<<<<<<< HEAD
 ```http
+=======
+```markdown
+>>>>>>> cc7135455c556ead94a458265ea717c580db6508
   DELETE /api/notes/{id}
 ```
 
@@ -43,7 +59,11 @@
 
 #### Creates and registers a user
 
+<<<<<<< HEAD
 ```http
+=======
+```markdown
+>>>>>>> cc7135455c556ead94a458265ea717c580db6508
   POST /api/users/
 ```
 
@@ -54,7 +74,11 @@
 
 #### Logs a user in
 
+<<<<<<< HEAD
 ```http
+=======
+```markdown
+>>>>>>> cc7135455c556ead94a458265ea717c580db6508
   POST /api/users/login
 ```
 
