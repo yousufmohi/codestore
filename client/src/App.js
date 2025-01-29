@@ -7,15 +7,9 @@ import Notes from './components/Notes';
 import { NavComponent } from './components/NavComponent';
 import SnippetPage from './components/SnippetPage';
 import CreatePage from './components/CreatePage';
+import NotFound from './components/NotFound';
 
-const NotFound = () => {
-  return (
-    <>
-      <h1>404 - Page Not Found</h1>
-      <p>Sorry, the page you are looking for could not be found.</p>
-    </>
-  );
-};
+
 
 function App() {
   return (
