@@ -22,7 +22,7 @@ const LoginForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post("http://localhost:5000/api/users/login", {
+      const response = await axios.post("https://codestore.onrender.com/api/users/login", {
         email: email,
         password: password
       });
@@ -44,14 +44,14 @@ const LoginForm = () => {
     }
   }
   return (
-    <div className='h-screen bg-gray-100'>
+    <div className='bg-black h-screen'>
       <NavComponent/>
-      <div className="mt-[14.5rem] max-w-md w-72 mx-auto p-6 bg-white rounded-lg shadow-lg">
-      {token && <Navigate to="/notes" replace/>}
-      <h2 className="text-2xl font-bold mb-6 text-center">Login</h2>
+      <div className="mt-[14.5rem] max-w-lg w-96 mx-auto p-6 bg-[#292929] rounded-lg shadow-lg">
+      {token ? <Navigate to="/notes" replace/> : undefined}
+      <h2 className="text-2xl font-bold mb-6 text-white text-center">Login</h2>
       <form onSubmit={handleSubmit}>
         <div className="mb-4">
-          <label className="block text-sm font-medium text-gray-700" htmlFor="email">
+          <label className="block text-sm font-medium text-white" htmlFor="email">
             Email
           </label>
           <input
@@ -64,7 +64,7 @@ const LoginForm = () => {
         </div>
 
         <div className="mb-4">
-          <label className="block text-sm font-medium  text-gray-700" htmlFor="email">
+          <label className="block text-sm font-medium  text-white" htmlFor="email">
             Password
           </label>
           <input
@@ -78,12 +78,12 @@ const LoginForm = () => {
 
         <button
           type="submit"
-          className="w-24 bg-black h-8 text-white font-semibold rounded-md"
+          className="w-full h-8 bg-[#6FEB2A] hover:bg-[#53992d] text-black font-semibold rounded-md"
         >
           Submit
         </button>
       </form>
-      <p className=' mt-3 text-sm'>Don't have an account? <span className='ont-medium text-blue-600 dark:text-blue-500 hover:underline'><Link to={'/register'}>Register</Link></span></p>
+      <p className=' mt-3 text-white  text-center text-sm'>Don't have an account? <span className='ont-medium text-blue-600 dark:text-blue-500 hover:underline'><Link to={'/register'}>Register</Link></span></p>
     </div>
     </div>  
   );

@@ -19,7 +19,7 @@ function SnippetPage() {
   },[url]);
 
   return (
-    <div>
+    <div className='bg-black'>
       <NavComponent/>
       {ID && <ExistingCodeEditor data={data} id={ID}/>}
     </div>

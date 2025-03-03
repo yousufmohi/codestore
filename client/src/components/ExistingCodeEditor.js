@@ -11,7 +11,7 @@ const ExistingCodeEditor = (props) => {
   const [title, setTitle] = useState('');  
   const [copyText, setCopyText] = useState('Copy');  
   const [language,setLanguage] = useState("");
-  const btnStyle = "focus:ring-cyan-300 focus:ring-opacity-0"
+  const btnStyle = "focus:ring-cyan-300 focus:ring-opacity-0 !bg-[#6FEB2A] hover:bg-[#53992d] text-black font-medium";
   useEffect(() => {
     if (props.data && props.data.length > 0) {
       const snippet = props.data.find(item => item._id === props.id);
@@ -56,7 +56,7 @@ const ExistingCodeEditor = (props) => {
       <TitleEditor value={title} setValue={setTitle} />
       <div className="border-solid border-2 w-[82.5vw]  border-gray-600">
         <Editor  
-          theme="light" 
+          theme="vs-dark" 
           height="50vh"
           defaultLanguage={language} 
           language={language}
@@ -69,12 +69,12 @@ const ExistingCodeEditor = (props) => {
       </div>
       <div className="flex gap-3 w-[82.5vw] mt-4 justify-end">
       <Button className={btnStyle} onClick={updateCode}>Save</Button>
-      <Dropdown className={btnStyle} label={capitalize(language)} dismissOnClick={true}>
+      <Button className={btnStyle} onClick={copyToClipBoard}>{copyText}</Button>
+      <Dropdown className={btnStyle} color="blue" label={capitalize(language)} dismissOnClick={true}>
         <Dropdown.Item onClick={() => setLanguage("javascript")}>Javascript</Dropdown.Item>
         <Dropdown.Item onClick={() => setLanguage("python")}>Python</Dropdown.Item>
         <Dropdown.Item onClick={() => setLanguage("java")}>Java</Dropdown.Item>
       </Dropdown>
-      <Button className={btnStyle} onClick={copyToClipBoard}>{copyText}</Button>
       </div>
     </div>
   );

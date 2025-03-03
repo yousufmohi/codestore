@@ -19,7 +19,9 @@ function Notes() {
         return;
       }
       const responseData = await AxiosInstance.get(url).catch((err) => console.error(err));
-      setData(responseData.data);
+      if (responseData?.data) {
+        setData(responseData.data);
+      }
    }
    fetchData();
   },[url,navigate]);
@@ -40,9 +42,9 @@ function Notes() {
   return (
     <div>
       <NavComponent/>
-      <div className='mt-20 mx-auto w-[40.5vw]'>
-        <h1 className='text-5xl font-bold'>Snippets</h1>
-        <p className='mt-3'>Write and tweak your code snippets in a super clean, IDE-style setup that’s easy to read and use.</p>
+      <div className='mt-20 mx-auto w-[40.5vw] bg-black'>
+        <h1 className='text-5xl font-bold text-white'>Snippets</h1>
+        <p className='mt-3 text-white'>Code smarter and faster in a sleek, developer-friendly IDE built for effortless editing.</p>
       </div>
       <div className='mt-20 mx-auto w-[40.5vw]'>
         <ul>
@@ -51,15 +53,15 @@ function Notes() {
               <div className='flex flex-row justify-between'>
                 <div className='flex mt-3'>
                   <img src={images[item.language]} alt={item.language} className='w-5 mr-6 object-contain'/>
-                  <button className='hover:border-b-[1.5px] hover:border-dashed hover:border-black' onClick={() => handleCodeClick(item._id)} key={i}>{item.title}</button>
+                  <button className='hover:border-b-[1.5px] hover:border-dashed hover:border-white text-white' onClick={() => handleCodeClick(item._id)} key={i}>{item.title}</button>
                 </div>
-                <button onClick={() => deleteSnippet(item._id)}>Delete</button>
+                <button className='text-white' onClick={() => deleteSnippet(item._id)}>Delete</button>
               </div>
             )
           })}
         </ul>
         <div className="flex justify-end mt-8">
-          <button onClick={createSnippet} className="px-4 py-2 bg-black text-white rounded">
+          <button onClick={createSnippet} className="px-4 py-2 bg-[#6FEB2A] hover:bg-[#53992d] text-black rounded">
             Create Snippet
           </button>
         </div>

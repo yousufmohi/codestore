@@ -25,7 +25,7 @@ const RegisterForm = () => {
       password:password
     }
     try {
-      await axios.post("http://localhost:5000/api/users/", DTO).catch((err) => {console.error(err)});
+      await axios.post("https://codestore.onrender.com/api/users/", DTO).catch((err) => {console.error(err)});
       toast.success("User Registered")
     } catch(error) {
       toast.error(error.response.data.message);
@@ -33,13 +33,13 @@ const RegisterForm = () => {
   }
 
   return (
-    <div className='h-screen bg-gray-100'>
+    <div className='bg-black h-screen'>
       <NavComponent/>
-      <div className="mt-[14.5rem] max-w-md w-72 mx-auto  p-6 bg-white rounded-lg shadow-lg">
-      <h2 className="text-2xl font-bold mb-6 text-center">Register</h2>
+      <div className="mt-[14.5rem] max-w-md w-full mx-auto  p-6 bg-[#292929] rounded-lg shadow-lg">
+      <h2 className="text-2xl font-bold mb-6 text-center text-white">Register</h2>
       <form onSubmit={handleSubmit}>
         <div className="mb-4">
-          <label className="block text-sm font-medium text-gray-700" htmlFor="name">
+          <label className="block text-sm font-medium text-white" htmlFor="name">
             Name
           </label>
           <input
@@ -52,7 +52,7 @@ const RegisterForm = () => {
         </div>
 
         <div className="mb-4">
-          <label className="block text-sm font-medium text-gray-700" htmlFor="email">
+          <label className="block text-sm font-medium text-white" htmlFor="email">
             Email
           </label>
           <input
@@ -65,7 +65,7 @@ const RegisterForm = () => {
         </div>
 
         <div className="mb-4">
-          <label className="block text-sm font-medium text-gray-700" htmlFor="email">
+          <label className="block text-sm font-medium text-white" htmlFor="email">
             Password
           </label>
           <input
@@ -79,12 +79,13 @@ const RegisterForm = () => {
 
         <button
           type="submit"
-          className="w-24 bg-black h-8 text-white font-semibold rounded-md"
+          className="w-full bg-[#6FEB2A] hover:bg-[#53992d] h-8 text-black font-semibold rounded-md"
         >
           Register
         </button>
       </form>
-      <p className=' mt-3 text-sm'>Already have an account? <span className='ont-medium text-blue-600 dark:text-blue-500 hover:underline'><Link to={'/login'}>Log In</Link></span></p>
+      <p className=' mt-3 text-white text-center text-sm'>Already have an account? <span className='ont-medium text-blue-600 dark:text-blue-500 hover:underline'><Link to={'/login'}>Login</Link></span></p>
+
     </div>
   </div>
   );
