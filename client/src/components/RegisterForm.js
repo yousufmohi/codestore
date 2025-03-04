@@ -4,12 +4,14 @@ import axios from "axios";
 import { toast } from 'react-hot-toast';
 import { NavComponent } from './NavComponent';
 import { Link, useNavigate } from 'react-router-dom';
+import AxiosInstance from './AxiosInstance';
 
 const RegisterForm = () => {
   const navigate = useNavigate();
   const [name,setName] = useState("");
   const [email,setEmail] = useState("");
   const [password,setPassword] = useState("");
+  const url = AxiosInstance.getUri() + "users"
 
   useEffect(() => {
     if(localStorage.getItem("token")){
@@ -25,7 +27,7 @@ const RegisterForm = () => {
       password:password
     }
     try {
-      await axios.post("https://codestore.onrender.com/api/users/", DTO).catch((err) => {console.error(err)});
+      await axios.post(`${url}/`, DTO).catch((err) => {console.error(err)});
       toast.success("User Registered")
     } catch(error) {
       toast.error(error.response.data.message);

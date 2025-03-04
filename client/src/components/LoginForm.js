@@ -5,9 +5,11 @@ import { AuthContext } from './AuthContext';
 import { toast } from 'react-hot-toast';
 import { Link, Navigate, useNavigate } from 'react-router-dom';
 import { NavComponent } from './NavComponent';
+import AxiosInstance from './AxiosInstance';
 
 const LoginForm = () => {
   const {token,setToken,setName,setUserEmail} = useContext(AuthContext);
+  const url = AxiosInstance.getUri() + "users";
   const navigate = useNavigate();
   const [email, setEmail] = useState(null);
   const [password, setPassword] = useState(null);
@@ -21,8 +23,9 @@ const LoginForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    const newURL = `${url}/login`;
     try {
-      const response = await axios.post("https://codestore.onrender.com/api/users/login", {
+      const response = await axios.post(newURL, {
         email: email,
         password: password
       });

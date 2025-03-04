@@ -50,18 +50,22 @@ function Notes() {
         <ul>
           {data.map((item,i) => {
             return(
-              <div className='flex flex-row justify-between'>
-                <div className='flex mt-3'>
-                  <img src={images[item.language]} alt={item.language} className='w-5 mr-6 object-contain'/>
-                  <button className='hover:border-b-[1.5px] hover:border-dashed hover:border-white text-white' onClick={() => handleCodeClick(item._id)} key={i}>{item.title}</button>
+              <div className='flex flex-col sm:flex-row justify-between items-center sm:items-start w-full p-2'>
+                <div className='flex items-center sm:mt-3 space-x-4'>
+                  <img 
+                    src={images[item.language]} 
+                    alt={item.language} 
+                    className='w-5 h-5 object-contain' 
+                  />
+                  <button className='text-sm sm:text-base px-2 py-1 sm:px-4 sm:py-2 hover:border-b-[1.5px] hover:border-dashed hover:border-white text-white' onClick={() => handleCodeClick(item._id)} key={i} >{item.title}</button>
                 </div>
-                <button className='text-white' onClick={() => deleteSnippet(item._id)}>Delete</button>
+                <button className='text-sm sm:text-base px-2 py-1 sm:px-4 sm:py-2 text-white mt-2 sm:mt-0'   onClick={() => deleteSnippet(item._id)}>Delete</button>
               </div>
             )
           })}
         </ul>
-        <div className="flex justify-end mt-8">
-          <button onClick={createSnippet} className="px-4 py-2 bg-[#6FEB2A] hover:bg-[#53992d] text-black rounded">
+        <div className="flex justify-end mt-8 sm:mt-0">
+          <button onClick={createSnippet} className="px-2 py-1 sm:px-4 sm:py-2 bg-[#6FEB2A] hover:bg-[#53992d] text-black rounded text-sm sm:text-base">
             Create Snippet
           </button>
         </div>
